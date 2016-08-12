@@ -2,6 +2,8 @@
 
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include <cmath>
+#include <stdint.h>
 
 // 	double xd = long2tilexd(40.347379, level) - x;
 // 	double yd = lat2tileyd(56.116962, level) - y;
@@ -19,14 +21,16 @@ int lat2tiley(double lat, int z)
 	return (int)(floor((1.0 - log(tan(lat * M_PI / 180.0) + 1.0 / cos(lat * M_PI / 180.0)) / M_PI) / 2.0 * pow(2.0, z)));
 }
 
-double long2tilexd(double lon, int z)
+int32_t long2tilexd(double lon, int z)
 {
-	return (lon + 180.0) / 360.0 * pow(2.0, z);
+	double t = (lon + 180.0) / 360.0 * pow(2.0, z);
+	return static_cast<int32_t>(std::round((t - static_cast<int32_t>(t)) * 256));
 }
 
-double lat2tileyd(double lat, int z)
+int32_t lat2tileyd(double lat, int z)
 {
-	return (1.0 - log(tan(lat * M_PI / 180.0) + 1.0 / cos(lat * M_PI / 180.0)) / M_PI) / 2.0 * pow(2.0, z);
+	double t = (1.0 - log(tan(lat * M_PI / 180.0) + 1.0 / cos(lat * M_PI / 180.0)) / M_PI) / 2.0 * pow(2.0, z);
+	return static_cast<int32_t>(std::round((t - static_cast<int32_t>(t)) * 256));
 }
 
 double tilex2long(int x, int z)

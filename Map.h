@@ -17,11 +17,18 @@ public:
 
 	void Draw(Render &render);
 
+	void AddPoint();
+
 private:
 	map_loader m_map_loader;
 
 	std::map<glm::i32vec2, sprite> m_sprites;
 	std::vector<glm::i32vec2> m_offsets;
+
+	glm::i32vec2 m_map_pos;
+	int32_t m_level = 17;
+
+	std::unique_ptr<sprite> m_point;
 
 };
 
