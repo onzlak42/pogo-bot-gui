@@ -1,4 +1,4 @@
-# Pokemon Go Client API cpp
+# Pokemon Go bot gui cpp
 
 # License
 
