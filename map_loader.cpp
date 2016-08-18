@@ -45,14 +45,14 @@ map_loader::map_loader()
 				empty = m_loaded.empty();
 				if (!empty)
 				{
-					pos = m_loaded.front();
-					m_loaded.pop_front();
+					pos = *m_loaded.begin();
 				}
 			}
 			if (!empty)
 			{
 				auto tail = load(pos);
 				std::lock_guard<std::mutex> lock(m_mutex);
+				m_loaded.erase(m_loaded.begin());
 				m_tiles[pos] = tail;
 			}
 			else
@@ -77,7 +77,11 @@ std::shared_ptr<Bitmap> map_loader::get(const glm::i32vec3 &pos)
 	auto it = m_tiles.find(pos);
 	if (it == m_tiles.end())
 	{
-		m_loaded.push_back(pos);
+		auto jt = m_loaded.find(pos);
+		if (it == m_tiles.end())
+		{
+			m_loaded.insert(pos);
+		}
 		return nullptr;
 	}
 

@@ -7,7 +7,7 @@
 #include <map>
 #include <glm/glm.hpp>
 #include <memory>
-#include <list>
+#include <set>
 #include <mutex>
 #include <atomic>
 #include <curl/curl.h>
@@ -26,7 +26,7 @@ private:
 	std::unique_ptr<CURL, std::function<void(CURL *)>> m_curl;
 
 	std::map<glm::i32vec3, std::shared_ptr<Bitmap>> m_tiles;
-	std::list<glm::i32vec3> m_loaded;
+	std::set<glm::i32vec3> m_loaded;
 
 	std::mutex m_mutex;
 	std::thread m_thread;
