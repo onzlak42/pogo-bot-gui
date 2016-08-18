@@ -2,6 +2,8 @@
 
 #include "Map.h"
 #include "render\camera.h"
+#include <thread>
+#include <chrono>
 
 
 App::App()
@@ -45,31 +47,53 @@ int App::Run()
 		t_camera.SetScale(3.0f);
 		Map map;
 
+		bot m_bot;
+		map.SetPos(m_bot.pos().latitude, m_bot.pos().longitude);
+		std::thread thread([&m_bot]
+		{
+			m_bot.run();
+		});
+
+		
+		coordinate pos = m_bot.pos();
+		map.AddPoint(pos.latitude, pos.longitude);
+		
+		float speed = 0.8f;
 		while (!m_window->WindowShouldClose())
 		{
 			if (m_window->GetKeyboard().IsKeyDown(GLFW_KEY_PERIOD))
 			{
-				t_camera.Scale(0.001f);
+				t_camera.Scale(0.01f);
 			}
 			if (m_window->GetKeyboard().IsKeyDown(GLFW_KEY_COMMA))
 			{
-				t_camera.Scale(-0.001f);
+				t_camera.Scale(-0.01f);
 			}
 			if (m_window->GetKeyboard().IsKeyDown(GLFW_KEY_LEFT))
 			{
-				t_camera.Move(glm::vec2(-0.1f, 0.0f));
+				t_camera.Move(glm::vec2(-speed, 0.0f));
 			}
 			if (m_window->GetKeyboard().IsKeyDown(GLFW_KEY_RIGHT))
 			{
-				t_camera.Move(glm::vec2(0.1f, 0.0f));
+				t_camera.Move(glm::vec2(speed, 0.0f));
 			}
 			if (m_window->GetKeyboard().IsKeyDown(GLFW_KEY_DOWN))
 			{
-				t_camera.Move(glm::vec2(0.0f, -0.1f));
+				t_camera.Move(glm::vec2(0.0f, -speed));
 			}
 			if (m_window->GetKeyboard().IsKeyDown(GLFW_KEY_UP))
 			{
-				t_camera.Move(glm::vec2(0.0f, 0.1f));
+				t_camera.Move(glm::vec2(0.0f, speed));
+			}
+
+			const auto &new_pos = m_bot.pos();
+			double dist = distance_earth(pos.latitude, pos.longitude, new_pos.latitude, new_pos.longitude);
+
+			if (dist > 0.005)
+			{
+				pos = new_pos;
+				map.SetPos(pos.latitude, pos.longitude);
+				map.AddPoint(pos.latitude, pos.longitude);
 			}
 
 			m_render->SetProjectMatrix(t_camera.GetProject());
@@ -77,7 +101,12 @@ int App::Run()
 			map.Draw(*m_render);
 
 			m_window->Update();
+
+			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 		}
+
+		m_bot.stop();
+		thread.join();
 	}
 
   Window::WindowSystemFinally();

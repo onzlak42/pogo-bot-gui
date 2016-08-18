@@ -17,7 +17,9 @@ public:
 
 	void Draw(Render &render);
 
-	void AddPoint();
+	void AddPoint(double latitude, double longitude);
+
+	void SetPos(double latitude, double longitude);
 
 private:
 	map_loader m_map_loader;
@@ -29,6 +31,8 @@ private:
 	int32_t m_level = 17;
 
 	std::unique_ptr<sprite> m_point;
+
+	std::vector<glm::vec2> m_points;
 
 };
 

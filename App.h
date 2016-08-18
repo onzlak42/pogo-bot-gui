@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "bot.h"
+
 #ifndef STL_MSVC
 #define STL_MSVC
 #endif
