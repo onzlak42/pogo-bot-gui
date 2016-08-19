@@ -71,17 +71,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)..\pogo_api_cpp\proto\proto_cpp;$(ProjectDir)..\pogo_bot;$(ProjectDir)..\pogo_api_cpp;$(ProjectDir)..\pogo_libs\boost;$(ProjectDir)..\pogo_libs\protobuf;$(ProjectDir)..\pogo_libs\rapidjson;$(ProjectDir)..\pogo_libs\libcurl;$(ProjectDir)..\pogo_libs\glm;$(ProjectDir)..\pogo_libs\glfw;$(ProjectDir)..\pogo_libs\glew;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\pogo_libs\protobuf\lib;$(ProjectDir)..\pogo_libs\boost\stage\lib;$(ProjectDir)..\pogo_libs\libcurl\lib;$(ProjectDir)..\pogo_libs\zlib\lib;$(ProjectDir)..\pogo_libs\glfw\lib;$(ProjectDir)..\pogo_libs\glew\lib;$(OutDir);$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3sd.lib;opengl32.lib;glew32sd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;pogo_bot.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ssleay32.lib;libcurld.lib;libeay32.lib;zlibstaticd.lib;pogo_api_cpp.lib;pogo_bot.lib;libprotocd.lib;libprotobufd.lib;glfw3sd.lib;opengl32.lib;glew32sd.lib;WLDAP32.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -135,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
-    <ClInclude Include="config.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="map_loader.h" />
     <ClInclude Include="render\Bitmap.h" />

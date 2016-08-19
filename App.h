@@ -3,25 +3,6 @@
 
 #include "bot.h"
 
-#ifndef STL_MSVC
-#define STL_MSVC
-#endif
-#ifndef _TIMESPEC_DEFINED
-#define _TIMESPEC_DEFINED
-#endif
-#ifndef CURL_STATICLIB
-#define CURL_STATICLIB
-#endif
-#ifndef _SCL_SECURE_NO_WARNINGS
-#define _SCL_SECURE_NO_WARNINGS
-#endif
-
-#pragma comment( lib, "Ws2_32.lib" )
-#pragma comment( lib, "WLDAP32.lib" )
-#pragma comment( lib, "ssleay32.lib" )
-#pragma comment( lib, "libeay32.lib" )
-#pragma comment( lib, "libcurld.lib" )
-
 #include <memory>
 #include "render\Render.h"
 #include "window\Window.h"
