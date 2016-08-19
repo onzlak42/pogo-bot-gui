@@ -22,9 +22,9 @@
 #pragma comment( lib, "libeay32.lib" )
 #pragma comment( lib, "libcurld.lib" )
 
-#include "window\Window.h"
-#include "render\Render.h"
 #include <memory>
+#include "render\Render.h"
+#include "window\Window.h"
 
 class App
 {

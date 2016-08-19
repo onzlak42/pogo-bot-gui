@@ -1,9 +1,9 @@
 #include "App.h"
 
-#include "Map.h"
-#include "render\camera.h"
 #include <thread>
 #include <chrono>
+#include "Map.h"
+#include "render\camera.h"
 
 
 App::App()

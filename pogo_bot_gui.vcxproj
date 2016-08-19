@@ -69,15 +69,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>E:\works\pogo_api_cpp\proto\proto_cpp;E:\works\pogo_bot;E:\works\pogo_api_cpp;$(ProjectDir)..\3rdparty\msvc14_x86\boost;e:\works\3rdparty\msvc14_x86\protobuf\;e:\works\3rdparty\msvc14_x86\rapidjson\;E:\works\3rdparty\msvc14_x86\libcurl\include;E:\works\3rdparty\msvc14_x86\glm;E:\works\3rdparty\msvc14_x86\glfw;E:\works\3rdparty\msvc14_x86\glew;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\3rdparty\msvc14_x86\protobuf\lib\;$(ProjectDir)Debug\;$(ProjectDir)..\3rdparty\msvc14_x86\boost\stage\lib\;$(ProjectDir)..\3rdparty\msvc14_x86\libcurl\lib\;$(ProjectDir)..\3rdparty\msvc14_x86\zlib\lib\;E:\works\3rdparty\msvc14_x86\libcurl\lib;E:\works\3rdparty\msvc14_x86\boost\stage\lib;E:\works\3rdparty\msvc14_x86\glfw\lib;E:\works\3rdparty\msvc14_x86\glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\pogo_api_cpp\proto\proto_cpp;$(ProjectDir)..\pogo_bot;$(ProjectDir)..\pogo_api_cpp;$(ProjectDir)..\pogo_libs\boost;$(ProjectDir)..\pogo_libs\protobuf;$(ProjectDir)..\pogo_libs\rapidjson;$(ProjectDir)..\pogo_libs\libcurl;$(ProjectDir)..\pogo_libs\glm;$(ProjectDir)..\pogo_libs\glfw;$(ProjectDir)..\pogo_libs\glew;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\pogo_libs\protobuf\lib;$(ProjectDir)..\pogo_libs\boost\stage\lib;$(ProjectDir)..\pogo_libs\libcurl\lib;$(ProjectDir)..\pogo_libs\zlib\lib;$(ProjectDir)..\pogo_libs\glfw\lib;$(ProjectDir)..\pogo_libs\glew\lib;$(OutDir);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glfw3sd.lib;opengl32.lib;glew32sd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;pogo_bot.lib;%(AdditionalDependencies)</AdditionalDependencies>

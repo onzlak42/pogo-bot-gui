@@ -4,6 +4,7 @@
 #include <boost/filesystem.hpp>
 #include <chrono>
 
+#include <curl/curl.h>
 
 namespace std
 {

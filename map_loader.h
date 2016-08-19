@@ -10,9 +10,10 @@
 #include <set>
 #include <mutex>
 #include <atomic>
-#include <curl/curl.h>
 #include <vector>
 #include "render/Bitmap.h"
+
+typedef struct Curl_easy CURL;
 
 class map_loader
 {

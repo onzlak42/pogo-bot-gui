@@ -2,8 +2,8 @@
 #ifndef Keyboard_GLFW_h__
 #define Keyboard_GLFW_h__
 
-#include <GLFW\glfw3.h>
 #include <array>
+#include <GLFW\glfw3.h>
 
 class Keyboard
 {

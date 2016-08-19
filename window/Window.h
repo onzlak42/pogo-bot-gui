@@ -5,10 +5,10 @@
 #ifndef WINDOW_GL_H
 #define WINDOW_GL_H
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include <memory>
+#include <GL/glew.h>
 #include "Keyboard.h"
+#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
 class Window
